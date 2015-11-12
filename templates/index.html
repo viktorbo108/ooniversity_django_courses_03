@@ -5,18 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>PyBursa Main</title>
+    <title>Home</title>
 
     <!-- Bootstrap -->
     <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <!-- My css -->
+    <link href="../static/css/style.css" rel="stylesheet">
+    <!-- Favicons -->
+    <link rel="icon" href="../static/images/py.png">
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+    </head>
   <body>
     <!-- start nav menu-->
     <nav class="navbar navbar-default">
@@ -34,71 +32,83 @@
     <!-- end nav menu-->
     <!--start content-->
     <div class="container">
-    <h2> Description</h2>
-    <h1><small>Описание курса PyBursa</small> </h1>
-    <p>
-      Курс PyBursa дает базовые знания по языку python. 
-      Синтаксис, подходы, философия, инструменты и экосистема. 
-      Покрывает основной синтаксис и инструкции языка, некоторые встроенные модули, основы ОПП.
-    </p>
-    <h2> Program</h2>
-    <h1><small>Программа курса PyBursa</small> </h1>
-    <article >
-      <h3><i>Первая неделя. Основы html/css. GIT</i></i></h3>
-      <p>html - теги и свойства</p>
-      <p>css - свойства и селекторы</p>
-      <p>Bootstrap</p>
-      <p>GIT basic reference</p>
-    </article>
-
-    <article >
-      <h3><i>Вторая неделя. Django first steps</i></h3>
-      <p>введение и описание фреймворка, старт проекта</p>
-      <p>инструменты отладки браузера</p>
-      <p>HTTP (GET, POST), (200, 404, 500), headers, cookies</p>
-      <p>админка</p>
-    </article>
-    
-    <article >
-      <h3><i>Третья неделя. Структура Web приложения. Работа с базами данных, ORM</i></h3>
-      <p>MVC</p>
-      <p>Views</p>
-      <p>роутинг урлов, передача параметров</p>
-      <p>обработка реквеста, формирование респонса</p>
-      <p>мидлвар</p>
-      <p>модели и поля, типы полей и аттрибуты</p>
-      <p>связи между таблицами и проектирование БД</p>
-      <p>миграции</p>
-      <p>QuerySet</p>
-    </article>
-    
-    <article >
-      <h3><i>Четвертая неделя. Кастомизация админки. Язык шаблонов</i></h3>
-      <p>настройка отображения виджетов админки</p>
-      <p>сортировка, фильтры, поиск</p>
-      <p>синтаксис шаблонов, логические конструкции</p>
-      <p>наследование и includes шаблонов</p>
-      <p>теги и фильтры</p>
-    </article>
-    
-    <article >
-      <h3><i>Пятая неделя. Forms. Class-based (Generic) Views.</i></h3>
-      <p>формы, типы полей, виджеты и аттрибуты, валидация</p>
-      <p>встроеные class-based views (TemplateView, ListView, ItemView)</p>
-      <p>синтаксис шаблонов, логические конструкции</p>
-      <p>миксины</p>
-    </article>
-    
-    <article >
-      <h3><i>Шестая неделя. Реализация стандартных задач. Средства отладки и тестирование. Деплоймент.</i></h3>
-      <p>отправка емейл, кеширование, интернационализация, батарейки (готовые решения)</p>
-      <p>logging, pdb, debug toolbar, extensions, unit-tests, selenium</p>
-      <p>nginx, управление статикой, деплоймент</p>
-    </article>
+      <h1>PyBursa<h1>
+      <h2> Description</h2>
+      <h1><small>Описание курса PyBursa</small> </h1>
+      <p>
+        На курсе мы Вас познакомим с фреимворком Djangot, вместе сделаем работающий проект на Python / Django и освоим еще много полезного.
+      </p>
+      <h2> Program</h2>
+      <h1><small>Программа курса PyBursa</small> </h1>
+      <ul class="list-unstyled">
+        <li><h3>Первая неделя. Основы html/css. GIT</h3>
+          <ol>
+            <li>html - теги и свойства</li>
+            <li>css - свойства и селекторы</li>
+            <li>Bootstrap</li>
+            <li>GIT basic reference</li>
+          </ol>
+        </li>
+      </ul>
+      <ul class="list-unstyled">
+        <li><h3>Вторая неделя. Django first steps</h3>
+          <ol>
+            <li>введение и описание фреймворка, старт проекта</li>
+            <li>инструменты отладки браузера</li>
+            <li>HTTP (GET, POST), (200, 404, 500), headers, cookies</li>
+            <li>админка</li>
+          </ol>
+        </li>
+      </ul>
+      <ul class="list-unstyled">
+        <li><h3>Третья неделя. Структура Web приложения. Работа с базами данных, ORM</h3>
+          <ol>
+            <li>MVC</li>
+            <li>Views</li>
+            <li>роутинг урлов, передача параметров</li>
+            <li>обработка реквеста, формирование респонса</li>
+            <li>мидлвар</li>
+            <li>модели и поля, типы полей и аттрибуты</li>
+            <li>связи между таблицами и проектирование БД</li>
+            <li>миграции</li>
+            <li>QuerySet</li>
+          </ol>
+        </li>
+      </ul>
+      <ul class="list-unstyled">
+        <li><h3>Четвертая неделя. Кастомизация админки. Язык шаблонов</h3>
+          <ol>
+            <li>настройка отображения виджетов админки</li>
+            <li>сортировка, фильтры, поиск</li>
+            <li>синтаксис шаблонов, логические конструкции</li>
+            <li>наследование и includes шаблонов</li>
+            <li>теги и фильтры</li>
+          </ol>
+        </li>
+      </ul>
+      <ul class="list-unstyled">
+        <li><h3>Пятая неделя. Forms. Class-based (Generic) Views.</h3>
+          <ol>
+            <li>формы, типы полей, виджеты и аттрибуты, валидация</li>
+            <li>встроеные class-based views (TemplateView, ListView, ItemView)</li>
+            <li>синтаксис шаблонов, логические конструкции</li>
+            <li>миксины</li>
+          </ol>
+        </li>
+      </ul>
+      <ul class="list-unstyled">
+        <li><h3>Шестая неделя. Реализация стандартных задач. Средства отладки и тестирование. Деплоймент.</h3>
+          <ol>
+            <li>отправка емейл, кеширование, интернационализация, батарейки (готовые решения)</li>
+            <li>logging, pdb, debug toolbar, extensions, unit-tests, selenium</li>
+            <li>nginx, управление статикой, деплоймент</li>
+          </ol>
+        </li>
+      </ul>
     </div>
     <!--end content-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="../static/js/jquery-1.11.3.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../static/js/bootstrap.js"></script>
   </body>
