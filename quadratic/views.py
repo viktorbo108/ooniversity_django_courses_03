@@ -13,8 +13,8 @@ def quadratic_results(request):
     not_null = 'коэффициент при первом слагаемом уравнения не может быть равным нулю'
     discr = 'Дискриминант: %d'
     dis_less_null = 'Дискриминант меньше нуля, квадратное уравнение не имеет действительных решений.'
-    dis_eq_null = 'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = %g'
-    two_roots = 'Квадратное уравнение имеет два действительных корня: x1 = %g, x2 = %g'
+    dis_eq_null = 'Дискриминант равен нулю, квадратное уравнение имеет один действительный корень: x1 = x2 = %s'
+    two_roots = 'Квадратное уравнение имеет два действительных корня: x1 = %s, x2 = %s'
     empty_str = ''
     site_view = {
         'head_line': 'Квадратное уравнение a*x*x + b*y + c = 0',
@@ -57,11 +57,13 @@ def quadratic_results(request):
             res_mes = dis_less_null
         else:
             x1 = qe.get_eq_root()
+            print x1
             x2 = qe.get_eq_root(order=2)
+            print x1
             if x1 == x2:
-                res_mes = dis_eq_null % x1
+                res_mes = dis_eq_null % round(x1,1)
             else:
-                res_mes = two_roots % (x1, x2)
+                res_mes = two_roots % (round(x1,1), round(x2,1))
         site_view['comment_result'] = res_mes
     else:
         site_view['comment_a'] = chk_gigit_a(a)[0]
