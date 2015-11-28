@@ -52,15 +52,19 @@
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
-            <th class="col_first">Курс</th>
-            <th class="col_second">Описание</th>
+            <th>#</th>
+            <th>Тема</th>
+            <th>Описание</th>
           </tr>
         </thead>
         <tbody>
-            <tr>
-              <td><a href="/courses/{{ c.id}}/">{{ c.name }}</a></td>
-              <td>{{ lessons }}</td>
-            </tr>
+          {% for lesson in lessons %}
+          <tr>
+              <td>{{ lesson.order }}</td>
+              <td>{{ lesson.subject }}</td>
+              <td>{{ lesson.description }}</td>
+          </tr>
+          {% endfor %}
         </tbody>
       </table>
       {{ courses.test }}

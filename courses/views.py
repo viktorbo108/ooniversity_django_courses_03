@@ -7,11 +7,12 @@ from courses.models import Course, Lesson
 #          'courses': qs_courses,
 #        })
         
+           
 def detail(request, course_id):
-    print course_id
-    courses = get_object_or_404(Course, id=course_id)
-    lessons = get_object_or_404(Lesson, course=course_id)
-    return render(request, 'courses/detail.html', {
-                  'courses': courses,
-                  'lessons': lessons,
-           })        
+    courses = Course.objects.get(id=course_id)
+    lessons = courses.lesson_set.all()
+    return render(request,
+                  'courses/detail.html', {
+                      'courses': courses,
+                      'lessons': lessons,
+                  })           
