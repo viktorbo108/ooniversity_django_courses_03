@@ -41,7 +41,7 @@
       <div class="jumbotron">
         <div class="container main_container">
           <div class="row">
-            <h2>ItBursa</h2>
+            <h2>TEST Detail</h2>
             <p class="text-left" >
               Мы специализируемся на "модных" языках программирования. 
               Принципиальное наше отличие от других курсов - 
@@ -61,12 +61,13 @@
         <tbody>
           {% for c in courses %}
             <tr>
-              <td><a href="{% url 'courses:detail' {{ c.id }} %}">{{ c.name }}</a></td>
+              <td><a href="{% url 'courses:detail' c.id %}">{{ c.name }}</a></td>
               <td>{{ c.short_description }}</td>
             </tr>
           {% endfor %}
         </tbody>
       </table>
+      {{ courses.test }}
     </div>
     <!--end content-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

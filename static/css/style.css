@@ -17,3 +17,21 @@ table.st-progress th{
   font-size: larger;
   color: white;
 }
+
+div.course_logo{
+    float: left;
+    margin: 5px 0px;
+}
+
+.course_logo img{
+  width: inherit;
+  height: 40px;
+}
+
+th.col_first{
+  width: 30%;
+}
+
+th.col_second{
+    width: 70%;
+}

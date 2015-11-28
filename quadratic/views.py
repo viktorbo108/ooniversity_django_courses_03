@@ -24,9 +24,7 @@ def quadratic_results(request):
         'comment_b': empty_str,
         'c_str': 'c = %s' % c,
         'comment_c': empty_str,
-        #'comment_discr': discr % 144,
         'comment_discr': empty_str,
-        #'comment_result': two_roots % (2.5, 3.4),
         'comment_result': empty_str,
     }
     

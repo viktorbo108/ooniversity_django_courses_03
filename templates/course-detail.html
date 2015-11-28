@@ -61,7 +61,7 @@
         <tbody>
           {% for c in courses %}
             <tr>
-              <td><a href="{% url 'courses:detail' {{ c.id }} %}">{{ c.name }}</a></td>
+              <td><a href="{{ c.id }}">{{ c.name }}</a></td>
               <td>{{ c.short_description }}</td>
             </tr>
           {% endfor %}
