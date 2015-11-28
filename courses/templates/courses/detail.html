@@ -41,16 +41,14 @@
       <div class="jumbotron">
         <div class="container main_container">
           <div class="row">
-            <h2>TEST Detail</h2>
+            <h2>{{ courses.name }}</h2>
             <p class="text-left" >
-              Мы специализируемся на "модных" языках программирования. 
-              Принципиальное наше отличие от других курсов - 
-              максимум пратики и жесткая система обязательных домашних заданий.
+              {{courses.description}}
             </p>
           </div>
         </div>
       </div>
-      <h3> Выбирай на каком курсе хочешь учиться!</h3>
+      <h3> План курса</h3>
       <table class="table table-bordered table-striped">
         <thead>
           <tr>
@@ -59,12 +57,10 @@
           </tr>
         </thead>
         <tbody>
-          {% for c in courses %}
             <tr>
-              <td><a href="{% url 'courses:detail' c.id %}">{{ c.name }}</a></td>
-              <td>{{ c.short_description }}</td>
+              <td><a href="/courses/{{ c.id}}/">{{ c.name }}</a></td>
+              <td>{{ lessons }}</td>
             </tr>
-          {% endfor %}
         </tbody>
       </table>
       {{ courses.test }}
