@@ -23,16 +23,16 @@
       <nav class="navbar navbar-inverse">
         <div class="container">
           <div class="course_logo">
-            <a class="brand" href="#"><img alt="PyBursa" src="../static/images/image_original.jpg"></a>
+            <a class="brand" href="{% url 'index' %}"><img alt="PyBursa" src="{% static 'images/image_original.jpg' %}"></a>
           </div>
 
           <div class="nav-collapse subnav-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a href="index">Главная</a></li>
-              <li><a href="contact">Контакты</a></li>
-              <li><a href="student_list">Студенты</a></li>
-              </ul>
+              <li class="active"><a href="{% url 'index' %}">Главная</a></li>
+              <li><a href="{% url 'contact' %}">Контакты</a></li>
+              <li><a href="{% url 'student_list' %}">Студенты</a></li>
+            </ul>
           </div> 
         </div> 
       </nav>
@@ -61,7 +61,7 @@
         <tbody>
           {% for c in courses %}
             <tr>
-              <td><a href="/courses/{{ c.id}}/">{{ c.name }}</a></td>
+              <td><a href="{% url 'courses:detail' c.id %}">{{ c.name }}</a></td>
               <td>{{ c.short_description }}</td>
             </tr>
           {% endfor %}
@@ -70,8 +70,8 @@
     </div>
     <!--end content-->
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="../static/js/jquery-1.11.3.min.js"></script>
+     <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../static/js/bootstrap.js"></script>
+    <script src="{% static 'js/bootstrap.js' %}"></script>
   </body>
 </html>
