@@ -29,8 +29,8 @@
           <div class="nav-collapse subnav-collapse">
 
             <ul class="nav navbar-nav">
-              <li class="active"><a class="navbar-brand" href="index">Главная</a></li>
-              <li><a class="navbar-brand" href="contact">Контакты</a></li>
+              <li class="active"><a href="index">Главная</a></li>
+              <li><a href="contact">Контакты</a></li>
               <li><a href="{% url 'students:list_view' %}?course_id={{courses.id}}">Студенты</a></li>
               </ul>
           </div> 
@@ -48,6 +48,38 @@
           </div>
         </div>
       </div>
+      <h3> Преподаватели</h3>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th><h5><b>Учитель</b></h5></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td>
+                <h5><a href="{% url 'coaches:detail' courses.coach.id %}"><b>{{ coach }}</b></a></h5>
+                <p>{{ courses.coach.description }}</p>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th><h5><b>Ассистент</b></h5></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+              <td>
+                <h5><b>{{ assistent }}</b></h5>
+                <p>{{ courses.assistant.description }}</p>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+      <hr>
       <h3> План курса</h3>
       <table class="table table-bordered table-striped">
         <thead>
