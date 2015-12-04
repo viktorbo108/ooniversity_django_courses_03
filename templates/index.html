@@ -1,42 +1,8 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Home</title>
+﻿{% extends "base_template.html" %}
 
-    <!-- Bootstrap -->
-    <!-- {% load staticfiles %} -->
-    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
-    <!-- My css -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+{% block title %}Home{% endblock %}
 
-    <!-- Favicons -->
-    <link rel="icon" href="../static/images/py.png">
-
-  </head>
-  <body>
-    <!-- start nav menu-->
-    <div class="container">
-      <nav class="navbar navbar-inverse">
-        <div class="container">
-          <div class="course_logo">
-            <a class="brand" href="{% url 'index' %}"><img alt="PyBursa" src="{% static 'images/image_original.jpg' %}"></a>
-          </div>
-
-          <div class="nav-collapse subnav-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="{% url 'index' %}">Главная</a></li>
-              <li><a href="{% url 'contact' %}">Контакты</a></li>
-              <li><a href="{% url 'student_list' %}">Студенты</a></li>
-            </ul>
-          </div> 
-        </div> 
-      </nav>
-      <!-- end nav menu-->
+     {% block content %}<!--start block-->
       <!--start content-->
       <div class="jumbotron">
         <div class="container main_container">
@@ -47,7 +13,7 @@
               Принципиальное наше отличие от других курсов - 
               максимум пратики и жесткая система обязательных домашних заданий.
             </p>
-          </div>
+        </div>
         </div>
       </div>
       <h3> Выбирай на каком курсе хочешь учиться!</h3>
@@ -61,17 +27,11 @@
         <tbody>
           {% for c in courses %}
             <tr>
-              <td><a href="{% url 'courses:detail' c.id %}">{{ c.name }}</a></td>
-              <td>{{ c.short_description }}</td>
+              <td><a href="{% url 'courses:detail' c.id %}">{{ c.name|upper }}</a></td>
+              <td>{{ c.short_description|title }}</td>
             </tr>
           {% endfor %}
         </tbody>
       </table>
-    </div>
     <!--end content-->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-     <script src="{% static 'js/jquery-1.11.3.min.js' %}"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="{% static 'js/bootstrap.js' %}"></script>
-  </body>
-</html>
+    <!--endblock-->{% endblock content %}
