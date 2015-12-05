@@ -54,7 +54,7 @@ def edit(request, student_id):
         form = StudentModelForm(instance=student)
     return render(request, 'students/edit.html', {'form': form})
 
-def delle(request, student_id):
+def remove(request, student_id):
     student = Student.objects.get(id=student_id)
     if request.method == 'POST':
         student.delete()
@@ -62,7 +62,7 @@ def delle(request, student_id):
         # messages for success form data:
         messages.success(request, student_edited)
         return redirect('students:list_view')
-    return render(request, 'students/delle.html')
+    return render(request, 'students/remove.html')
 
 
 
