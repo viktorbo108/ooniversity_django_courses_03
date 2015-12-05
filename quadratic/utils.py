@@ -1,10 +1,10 @@
 import math
 
 class QuadraticEquation(object):
-    def __init__(self, a, b, c):
-        self.a = a
-        self.b = b
-        self.c = c
+    def __init__(self, data):
+        self.a = data['a']
+        self.b = data['b']
+        self.c = data['c']
     
     def get_discr(self):
         self.d = self.b ** 2 - 4 * self.a * self.c

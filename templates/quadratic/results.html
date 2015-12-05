@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,7 +9,6 @@
     <title>Quadratic</title>
 
     <!-- Bootstrap -->
-    {% load staticfiles %}
     <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
     <!-- My css -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
@@ -25,7 +25,7 @@
             <li><a class="navbar-brand" href="index.html">Main</a></li>
             <li><a class="navbar-brand" href="contact.html">Contacts</a></li>
             <li><a class="navbar-brand" href="student_list.html">Students</a></li>
-            <li class="active"><a class="navbar-brand" href="quadratic/results.html">Уравнение</a></li>
+            <li class="active"><a class="navbar-brand" href="#">Уравнение</a></li>
           </ul>
         </div> 
       </nav>
@@ -34,15 +34,12 @@
       <div class="jumbotron">
         <div  id='organizers' class="container main_container">
           <div class="row">
-          <h5>{{ head_line }}</h5>
-          <ul>
-            <li>{{a_str}}</li>
-            <div>{{ comment_a }}</div>
-            <li>{{b_str}}</li>
-            <div>{{ comment_b }}</div>
-            <li>{{c_str}}</li>
-            <div>{{ comment_c }}</div>
-          </ul>
+            <h2>{{ head_line }}</h2>
+            <hr>
+            <form method="get">
+              {{ form.as_p }}
+              <input type="submit" value="Решить">
+            </form>
             <div><h5>{{ comment_discr }}</h5></div>
             <div><h5>{{ comment_result }}</h5></div>
           </div>
