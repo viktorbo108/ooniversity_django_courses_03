@@ -13,12 +13,11 @@
                 {% endfor %}
             </ul>
           {% endif %}
-          <h2>Редактирование студента</h2>
+          <h2>Удаление студента</h2>
           <hr>
           <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit" value="Изменить">
+            <input type="submit" value="Удалить">
           </form>
           </div>
         </div>

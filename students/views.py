@@ -57,17 +57,12 @@ def edit(request, student_id):
 def delle(request, student_id):
     student = Student.objects.get(id=student_id)
     if request.method == 'POST':
-        form = StudentModelForm(request.POST, instance=student)
-        if form.is_valid():
-            student_edited = 'Данные изменены'
-            edited_student = StudentModelForm(request.POST, instance=student)
-            res = edited_student.save()
-            # messages for success form data:
-            messages.success(request, student_edited)
-            return redirect('/students/delle/'+student_id)
-    else:
-        form = StudentModelForm(instance=student)
-    return render(request, 'students/delle.html', {'form': form})
+        student.delete()
+        student_edited = 'Данные удалены'
+        # messages for success form data:
+        messages.success(request, student_edited)
+        return redirect('students:list_view')
+    return render(request, 'students/delle.html')
 
 
 
