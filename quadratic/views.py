@@ -21,7 +21,6 @@ def quadratic_results(request):
             got_data = form.cleaned_data
             qe =  QuadraticEquation(got_data) 
             dsc = qe.get_discr()
-            print int(dsc) 
             if dsc > 0:
                 x1 = qe.get_eq_root()
                 x2 = qe.get_eq_root(order=2)
