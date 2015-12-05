@@ -41,8 +41,5 @@ def quadratic_results(request):
     site_view = {
         'comment_discr': comment_dsc,
         'comment_result': comment_result,
-        'form': form,
-    }
-    
-
+        'form': form,}
     return render(request, 'quadratic/results.html', site_view)
