@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Student{% endblock %}
+
+     {% block content %}<!--start block-->
+     <!--start content-->
+      <div class="jumbotron">
+        <div class="container main_container">
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">x</button>
+            <br>
+            {% if messages %} 
+              <ul class="messages">
+                  {% for message in messages %}
+                  <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                  {% endfor %}
+              </ul>
+            {% endif %}
+          </div>
+          <h2>Редактирование курса</h2>
+          <hr>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Изменить">
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end content-->
+    <!--endblock-->{% endblock content %}

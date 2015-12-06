@@ -3,6 +3,17 @@
 
      {% block content %}<!--start block-->
       <!--start content-->
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        <br>
+        {% if messages %} 
+          <ul class="messages">
+              {% for message in messages %}
+              <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+              {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
       <div class="jumbotron">
         <div class="container main_container">
           <div class="row">
@@ -44,6 +55,8 @@
           </tr>
         </tbody>
       </table>
+      <hr>
+      <a href="{% url 'courses:detail' courses.id %}add_lesson"><button class="btn btn-primary">+ Добавить занятие</button></a>
       <hr>
       <h3> План курса</h3>
       <table class="table table-bordered table-striped">
