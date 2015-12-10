@@ -1,5 +1,11 @@
 ﻿{% extends "base.html" %}
+
 {% block title %}Course{% endblock %}
+
+              {% block nav_students %}
+              <li><a href="{% url 'students:list_view' %}?course_id={{course_id}}">Студенты</a></li>
+              {% endblock nav_students %}
+ 
 
      {% block content %}<!--start block-->
       <!--start content-->
