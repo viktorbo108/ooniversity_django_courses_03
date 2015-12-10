@@ -36,13 +36,17 @@ class StudentCreateView(CreateView):
         context['title'] = "Student registration"
         return context
 
+    def form_valid(self, form):
+        messages.add_message(self.request, messages.INFO, 'Студент добавлен')
+        return super(StudentCreateView, self).form_valid(form)
+
         
 class StudentUpdateView(UpdateView):
     model = Student
     
     def get_success_url(self):
         pk = self.object.pk
-        return reverse_lazy('students:edit2', kwargs={'pk': pk})
+        return reverse_lazy('students:edit', kwargs={'pk': pk})
         
     def get_context_data(self, **kwargs):
         context = super(StudentUpdateView, self).get_context_data(**kwargs)
