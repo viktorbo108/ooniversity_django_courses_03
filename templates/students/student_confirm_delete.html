@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ title }}{% endblock %}
+
+     {% block content %}<!--start block-->
+     <!--start content-->
+      <div class="jumbotron">
+        <div class="container main_container">
+          {% if messages %} 
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+          {% endif %}
+          <h2>{{ title }}</h2>
+          <hr>
+          <form method="post">
+            {% csrf_token %}
+            <input type="submit" value="Удалить">
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end content-->
+    <!--endblock-->{% endblock content %}

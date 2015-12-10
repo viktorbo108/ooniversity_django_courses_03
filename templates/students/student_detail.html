@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Student{% endblock %}
+
+     {% block content %}<!--start block-->
+     <!--start content-->
+      <div class="jumbotron">
+        <div class="container main_container">
+          <div class="row">
+            <div class="col-md-4">
+              <h3>{{student.name}} {{student.surname}}</h3><br>
+              <img src="{% static 'images/jent.jpg' %}" alt="Бабичук Александр" class="img-rounded">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <hr>
+              <table class="table st-card">
+                <tbody>
+                  <tr>
+                    <td>Дата рождения</td>
+                    <td>{{student.date_of_birth}}</td>
+                  </tr>
+                  <tr>
+                    <td>Адрес</td>
+                    <td>{{student.address}}</td>
+                  </tr>
+                  <tr>
+                    <td>Почта</td>
+                    <td>{{student.email}}</td>
+                  </tr>
+                  <tr>
+                    <td>Логин Skype</td>
+                    <td>{{student.skype}}</td>
+                  </tr>
+                  <tr>
+                    <td>Телефон</td>
+                    <td>{{student.phone}}</td>
+                  </tr>
+                  <tr>
+                    <td>Курсы</td>
+                    <td>
+                    {% for course in student.courses.all%}
+                        <a href="{% url 'courses:detail' course.id %}">{{ course.name }}</a><br>
+                    {% endfor %}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--end content-->
+    <!--endblock-->{% endblock content %}
