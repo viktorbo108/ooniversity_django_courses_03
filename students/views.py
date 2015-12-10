@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import render, redirect, get_object_or_404
 from students.models import Student
-from students.forms import StudentModelForm
 from django.contrib import messages
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -12,7 +10,6 @@ from django.core.urlresolvers import reverse_lazy
 
 class StudentListView(ListView):
     model = Student
-    context_object_name = 'list_students'
     
     def get_queryset(self):
         course_id = self.request.GET.get('course_id')
