@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Student{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
      {% block content %}<!--start block-->
      <!--start content-->
       <div class="jumbotron">
         <div class="container main_container">
           {% include "include/message_include.html" %}
-          <h2>Редактирование курса</h2>
+          <h2>{{ title }}</h2>
           <hr>
           <form method="post">
             {% csrf_token %}
