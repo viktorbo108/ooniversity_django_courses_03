@@ -62,7 +62,7 @@ class CourseUpdateView(UpdateView):
         
     def get_success_url(self):
         pk = self.object.pk
-        return reverse_lazy('courses:add_lesson', kwargs={'pk': pk})
+        return reverse_lazy('courses:edit', kwargs={'pk': pk})
         
         
 class CourseDeleteView(DeleteView):
