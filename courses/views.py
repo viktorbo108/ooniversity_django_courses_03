@@ -5,7 +5,6 @@ from django.contrib import messages
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
-from pybursa.views import MixinMsg, MixinTitle
 
 
 class CourseDetailView(DetailView):
@@ -65,6 +64,7 @@ class CourseUpdateView(UpdateView):
         pk = self.object.pk
         return reverse_lazy('courses:edit', kwargs={'pk': pk})
         
+        
 class CourseDeleteView(DeleteView):
     model = Course
     template_name = "courses/remove.html"
@@ -81,16 +81,23 @@ class CourseDeleteView(DeleteView):
         return super(CourseDeleteView, self).delete(request, *args, **kwargs)
     
 
-class LessonCreateView(MixinMsg, MixinTitle, CreateView):
+class LessonCreateView(CreateView):
     model = Lesson
     template_name = 'courses/add_lesson.html'
     context_object_name = 'lesson'
-    title = 'Lesson creation'
-    success_message = {'msg': 'Lesson %s has been successfully added.', 'attr': 'subject'}
 
+    def get_context_data(self, **kwargs):
+        context = super(LessonCreateView, self).get_context_data(**kwargs)
+        context['title' ] = 'Lesson creation'
+        return context
+    
+    def form_valid(self, form):
+        course_name = self.request.POST
+        messages.add_message(self.request, messages.INFO, 
+                             'Lesson %s has been successfully added.' % course_name['subject'] )
+        return super(LessonCreateView, self).form_valid(form)
+        
     def get_success_url(self):
         pk = self.object.pk
         return reverse_lazy('courses:add_lesson', kwargs={'pk': pk})
-
-    def get_initial(self):
-        return {'course': self.kwargs['pk']}
+        
