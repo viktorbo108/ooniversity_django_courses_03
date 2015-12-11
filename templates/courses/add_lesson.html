@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
-{% block title %}Add Course{% endblock %}
+{% block title %}{{ title }}{% endblock %}
 
      {% block content %}<!--start block-->
      <!--start content-->
       <div class="jumbotron">
         <div class="container main_container">
-          <h2>Создание нового занятия</h2>
+          {% include "include/message_include.html" %}
+          <h2>{{ title }}</h2>
           <hr>
           <form method="post">
             {% csrf_token %}

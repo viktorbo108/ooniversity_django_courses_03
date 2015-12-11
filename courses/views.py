@@ -1,12 +1,11 @@
 # -*- coding: utf-8 -*-
 
-from django.shortcuts import get_object_or_404, render, redirect
 from courses.models import Course, Lesson
-from courses.forms import CourseModelForm, LessonModelForm
 from django.contrib import messages
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
+from pybursa.views import MixinMsg, MixinTitle
 
 
 class CourseDetailView(DetailView):
@@ -81,18 +80,16 @@ class CourseDeleteView(DeleteView):
         return super(CourseDeleteView, self).delete(request, *args, **kwargs)
     
 
-def add_lesson(request, course_id):
-    if request.method == 'POST':
-        form = LessonModelForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            course_subject  = data['subject']
-            add_message = 'Course %s has been successfully added.' % course_subject
-            new_lesson = LessonModelForm(request.POST)
-            result = new_lesson.save()
-            messages.success(request, add_message)
-            return redirect('/courses/%i' % int(course_id))
+class LessonCreateView(MixinMsg, MixinTitle, CreateView):
+    model = Lesson
+    template_name = 'courses/add_lesson.html'
+    context_object_name = 'lesson'
+    title = 'Lesson creation'
+    success_message = {'msg': 'Lesson %s has been successfully added.', 'attr': 'subject'}
 
-    else:
-        form = LessonModelForm(initial={'course': course_id})
-    return render(request, 'courses/add_lesson.html', {'form': form})
+    def get_success_url(self):
+        pk = self.object.pk
+        return reverse_lazy('courses:add_lesson', kwargs={'pk': pk})
+
+    def get_initial(self):
+        return {'course': self.kwargs['pk']}
