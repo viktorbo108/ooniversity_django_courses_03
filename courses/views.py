@@ -62,7 +62,7 @@ class CourseUpdateView(UpdateView):
         
     def get_success_url(self):
         pk = self.object.pk
-        return reverse_lazy('courses:edit', kwargs={'pk': pk})
+        return reverse_lazy('courses:edit', None, [self.object.id])
         
         
 class CourseDeleteView(DeleteView):
@@ -77,7 +77,7 @@ class CourseDeleteView(DeleteView):
         return context
 
     def delete(self, request, *args, **kwargs):
-        messages.success(self.request, 'Course %s has been deleted.' % (self.object.name))
+        messages.add_message(self.request, messages.INFO, 'Данные удалены')
         return super(CourseDeleteView, self).delete(request, *args, **kwargs)
     
 
