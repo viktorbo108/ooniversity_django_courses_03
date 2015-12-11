@@ -56,7 +56,8 @@ class CourseUpdateView(UpdateView):
         context['title' ] = "Course update"
         return context
 
-    def form_valid(self, form): 
+    def form_valid(self, form):
+        form.save()
         messages.add_message(self.request, messages.INFO, 'The changes have been saved')
         return super(CourseUpdateView, self).form_valid(form)
         
