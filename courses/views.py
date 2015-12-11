@@ -95,6 +95,7 @@ class LessonCreateView(CreateView):
         return context
     
     def form_valid(self, form):
+        form.save()
         course_name = self.request.POST
         messages.add_message(self.request, messages.INFO, 
                              'Lesson %s has been successfully added.' % course_name['subject'] )
