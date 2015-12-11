@@ -57,7 +57,7 @@ class CourseUpdateView(UpdateView):
 
     def form_valid(self, form):
         form.save()
-        messages.add_message(self.request, messages.INFO, 'The changes have been saved')
+        messages.success(self.request, 'The changes have been saved.')
         return super(CourseUpdateView, self).form_valid(form)
         
     def get_success_url(self):
@@ -77,7 +77,7 @@ class CourseDeleteView(DeleteView):
         return context
 
     def delete(self, request, *args, **kwargs):
-        messages.add_message(self.request, messages.INFO, 'Данные удалены')
+        messages.success(self.request, 'Course %s has been deleted.' % (self.object.name))
         return super(CourseDeleteView, self).delete(request, *args, **kwargs)
     
 
