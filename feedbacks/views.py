@@ -16,8 +16,8 @@ class FeedbackView(CreateView):
         form.save()
         data = self.request.POST
         mail_admins(data['subject'], data['message'])
-        messages.add_message(self.request, messages.INFO, 
-                            'Thank you for your feedback! We will keep in touch with you very soon!')
+        messages.success(
+            self.request, 'Thank you for your feedback! We will keep in touch with you very soon!')
         return super(FeedbackView, self).form_valid(form)
     
     def get_context_data(self, **kwargs):
