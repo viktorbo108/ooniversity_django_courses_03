@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'courses',
     'students',
     'coaches',
+    'feedbacks',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -91,3 +92,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
+#EMAIL_HOST_USER = 'viktorbo108'
+#EMAIL_HOST_PASSWORD = 'neohost108'
+
+ADMINS = (('John', 'john@example.com'), ('Mary', 'mary@example.com'))
+DEFAULT_FROM_EMAIL = 'sdgs@fds.com'
