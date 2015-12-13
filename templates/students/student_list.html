@@ -45,6 +45,29 @@
                   {% endfor %}
                 </tbody>
               </table>
+              <nav>
+                <ul class="pagination">
+                  <li>
+                      {% if page_obj.has_previous %}
+                          <a href="?page={{ page_obj.previous_page_number }}"><< previous</a>
+                      {% endif %}
+                  </li>
+                  {% for p in paginator.page_range %}
+                    {% if p == page_obj.number %}
+                    <li class="active">
+                    {% else %}
+                    <li>
+                    {% endif %}
+                          <a href="{% url 'students:list_view' %}?course_id={{ list_student.courses.id }}&page={{ p }}">{{ p }}</a>
+                      {% endfor %}
+                  </li>
+                  <li>
+                         {% if page_obj.has_next %}
+                          <a href="?page={{ page_obj.next_page_number }}">next >></a>
+                      {% endif %}
+                  </li>
+                </ul>
+              </nav>
           </div>
         </div>
       </div>
