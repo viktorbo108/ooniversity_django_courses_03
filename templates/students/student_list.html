@@ -58,7 +58,7 @@
                     {% else %}
                     <li>
                     {% endif %}
-                          <a href="{% url 'students:list_view' %}?course_id={{ list_student.courses.id }}&page={{ p }}">{{ p }}</a>
+                          <a href="{% url 'students:list_view' %}?course_id={{ course_id }}&page={{ p }}">{{ p }}</a>
                       {% endfor %}
                   </li>
                   <li>

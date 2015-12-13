@@ -1,6 +1,6 @@
-from django.shortcuts import render
 from feedbacks.models import Feedback
 from django.views.generic.edit import CreateView
+from django.core.urlresolvers import reverse_lazy
 from django.core.mail import mail_admins
 from django.contrib import messages
 
@@ -8,7 +8,8 @@ from django.contrib import messages
 class FeedbackView(CreateView):
     model = Feedback
     template_name = "feedback.html"
-    success_url = '/feedback'
+    success_url = reverse_lazy('feedback')
+    context_object_name = "form"
     
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
