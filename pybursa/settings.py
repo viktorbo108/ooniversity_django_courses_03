@@ -10,6 +10,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -22,7 +23,7 @@ SECRET_KEY = '&a6y@o_(pvozox-#y@jfp3-o=ks^*%83!@oc6@@f&52qsr_$*v'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = []
 
@@ -42,6 +43,7 @@ INSTALLED_APPS = (
     'students',
     'coaches',
     'feedbacks',
+    #'debug_toolbar',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -52,12 +54,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
 )
 
 ROOT_URLCONF = 'pybursa.urls'
 
 WSGI_APPLICATION = 'pybursa.wsgi.application'
 
+INTERNAL_IPS = '91.231.98.108'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
@@ -71,6 +75,12 @@ DATABASES = {
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
+#from django.utils.translation import ugettext_lazy as _
+
+#LANGUAGES = (
+#    ('ru', _('Russian')),
+#    ('en', _('English')),
+#)
 
 LANGUAGE_CODE = 'en-us'
 
@@ -88,7 +98,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_files')
+
+STATICFILES_FINDERS = \
+("django.contrib.staticfiles.finders.FileSystemFinder",
+"django.contrib.staticfiles.finders.AppDirectoriesFinder")
+
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
 
 TEMPLATE_DIRS = [os.path.join(BASE_DIR, 'templates')]
 
@@ -99,3 +115,61 @@ EMAIL_PORT = 1025
 
 ADMINS = (('John', 'john@example.com'), ('Mary', 'mary@example.com'))
 DEFAULT_FROM_EMAIL = 'sdgs@fds.com'
+
+#LOGGING_CONFIG = None
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'loggers': {
+        'courses': {
+            'handlers': ['file',],
+            'level': 'DEBUG',
+            #'propagate': True,
+        },
+        'students': {
+            'handlers': ['console', 'students_file'],
+            'level': 'WARNING',
+        },
+        'students.views.detail': {
+            'handlers': [],
+            'level': 'DEBUG',
+        },
+        'testing': {
+            'handlers': ['console',],
+            'level': 'DEBUG',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple',
+       },
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'courses_logger.log'),
+            'formatter': 'simple',
+        },
+        'students_file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'students_logger.log'),
+            'formatter': 'verbose',
+        },
+    },
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(name)s %(message)s'
+        },
+        'simple': {
+            'format': '%(name)s %(message)s'
+        },
+    },
+}
+
+try:
+    from local_settings import *
+except ImportError:
+    print 'Warning! local_settings are not defined!'

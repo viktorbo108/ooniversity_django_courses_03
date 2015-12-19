@@ -1,4 +1,4 @@
-﻿{% extends "base.html" %}
+{% extends "base.html" %}
 
 {% block title %}Studens{% endblock %}
 
@@ -52,15 +52,17 @@
                           <a href="?page={{ page_obj.previous_page_number }}"><< previous</a>
                       {% endif %}
                   </li>
-                  {% for p in paginator.page_range %}
-                    {% if p == page_obj.number %}
-                    <li class="active">
-                    {% else %}
-                    <li>
-                    {% endif %}
-                          <a href="{% url 'students:list_view' %}?course_id={{ course_id }}&page={{ p }}">{{ p }}</a>
-                      {% endfor %}
+                {% for p in paginator.page_range %}
+                  {% if p == page_obj.number %}
+                  <li class="active">
+                  {% else %}
+                  <li>
+                  {% endif %}
+                    <a href="{% url 'students:list_view' %}?{% if course_id %}course_id={{ course_id }}&{% endif %}page={{ p }}">
+                      {{ p }}
+                    </a>
                   </li>
+                {% endfor %}
                   <li>
                          {% if page_obj.has_next %}
                           <a href="?page={{ page_obj.next_page_number }}">next >></a>

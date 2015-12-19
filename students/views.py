@@ -6,6 +6,10 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
+import logging
+
+logger = logging.getLogger(__name__) # __name__ = students.views
+logger_detail = logging.getLogger('students.views.detail') 
 
 
 class StudentListView(ListView):
@@ -30,7 +34,17 @@ class StudentListView(ListView):
         
 class StudentDetailView(DetailView):
     model = Student
-
+    
+    def get_context_data(self, **kwargs):
+        #import pdb; pdb.set_trace()
+        logger_detail.debug("Students detail view has been debugged")
+        logger_detail.info("Logger of students detail view informs you!")
+        logger_detail.warning("Logger of students detail view warns you!")
+        context = super(StudentDetailView, self).get_context_data(**kwargs)
+        context['title'] = "Student detail"
+        return context
+    
+    
     
 class StudentCreateView(CreateView):
     model = Student
