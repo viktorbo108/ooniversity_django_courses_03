@@ -13,7 +13,7 @@ class CoursesListTest(TestCase):
         response = client.get('/')
         self.assertEqual(response.status_code, 200)
         
-    def test_creating_course(self):
+    def test_creating_courses(self):
         self.assertEqual(Course.objects.all().count(), 0)
         
         coach1 = Coach.objects.create(
@@ -35,6 +35,23 @@ class CoursesListTest(TestCase):
                     )
         
         self.assertEqual(Course.objects.all().count(), 1)
+
+    def test_course_list_template(self):
+        response = self.client.get('/')
+        self.assertTemplateUsed(response, 'index.html')
+        
+    def test_course_list_add_course_button(self):
+        response = self.client.get('/')
+        self.assertContains(response, 'Добавить курс')
+
+    def test_course_create(self):
+        course1 = Course.objects.create(
+                        name = 'Test course',
+                        short_description = 'Test course short_description',
+                        description = 'Test course description',
+                    )
+        self.assertEqual(Course.objects.all().count(), 1)
+        
         
 class CoursesDetailTest(TestCase):
     

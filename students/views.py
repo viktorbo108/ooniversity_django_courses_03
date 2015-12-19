@@ -48,6 +48,7 @@ class StudentDetailView(DetailView):
 class StudentCreateView(CreateView):
     model = Student
     success_url = reverse_lazy('students:list_view')
+    fields = '__all__'
     
     def get_context_data(self, **kwargs):
         context = super(StudentCreateView, self).get_context_data(**kwargs)
@@ -61,6 +62,7 @@ class StudentCreateView(CreateView):
         
 class StudentUpdateView(UpdateView):
     model = Student
+    fields = '__all__'
     
     def get_success_url(self):
         pk = self.object.pk
