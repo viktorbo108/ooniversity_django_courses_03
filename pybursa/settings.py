@@ -123,21 +123,12 @@ LOGGING = {
     'disable_existing_loggers': False,
     'loggers': {
         'courses': {
-            'handlers': ['file',],
+            'handlers': ['file'],
             'level': 'DEBUG',
-            #'propagate': True,
         },
         'students': {
-            'handlers': ['console', 'students_file'],
+            'handlers': ['students_file'],
             'level': 'WARNING',
-        },
-        'students.views.detail': {
-            'handlers': [],
-            'level': 'DEBUG',
-        },
-        'testing': {
-            'handlers': ['console',],
-            'level': 'DEBUG',
         },
     },
     'handlers': {
@@ -161,10 +152,10 @@ LOGGING = {
     },
     'formatters': {
         'verbose': {
-            'format': '%(levelname)s %(asctime)s %(name)s %(message)s'
+            'format': '%(levelname)s %(asctime)s %(module)s %(funcName)s %(message)s'
         },
         'simple': {
-            'format': '%(name)s %(message)s'
+            'format': '%(levelname)s %(message)s'
         },
     },
 }
