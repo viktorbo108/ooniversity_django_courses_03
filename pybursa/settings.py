@@ -144,7 +144,7 @@ LOGGING = {
             'formatter': 'simple',
         },
         'students_file': {
-            'level': 'DEBUG',
+            'level': 'WARNING',
             'class': 'logging.FileHandler',
             'filename': os.path.join(BASE_DIR, 'students_logger.log'),
             'formatter': 'verbose',
