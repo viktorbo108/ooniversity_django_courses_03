@@ -116,7 +116,7 @@ EMAIL_PORT = 1025
 ADMINS = (('John', 'john@example.com'), ('Mary', 'mary@example.com'))
 DEFAULT_FROM_EMAIL = 'sdgs@fds.com'
 
-#LOGGING_CONFIG = None
+LOGGING_CONFIG = None
 
 LOGGING = {
     'version': 1,
