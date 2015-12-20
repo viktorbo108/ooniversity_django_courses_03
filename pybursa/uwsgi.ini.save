@@ -1,0 +1,10 @@
+[uwsgi]
+chdir=/home/cadet/Public/web_course/ooniversity_django_courses_03
+module=pybursa.wsgi:application
+#http=91.231.98.108:8000
+socket=91.231.98.108:8000
+master=True
+pidfile=/tmp/project-master.pid
+vacuum=True
+max-requests=5000
+#daemonize=/var/log/uwsgi/pybursa.log/uwsgi/pybursa.log

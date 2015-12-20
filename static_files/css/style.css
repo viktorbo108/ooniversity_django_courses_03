@@ -1,0 +1,37 @@
+#organizers {
+  color: #0B0B61
+}
+table.st-card  tr{
+  background: #B5FFBA;
+  border: 2px solid #FFF;
+  font-size: larger;
+}
+table.st-progress td{
+  background: #B5FFBA;
+  border: 2px solid #FFF;
+  font-size: larger;
+}
+table.st-progress th{
+  background: #114A15;
+  border: 2px solid #FFF;
+  font-size: larger;
+  color: white;
+}
+
+div.course_logo{
+    float: left;
+    margin: 5px 0px;
+}
+
+.course_logo img{
+  width: inherit;
+  height: 40px;
+}
+
+th.col_first{
+  width: 30%;
+}
+
+th.col_second{
+    width: 70%;
+}
